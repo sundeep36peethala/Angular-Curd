@@ -1,0 +1,73 @@
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AdvisorBranding } from '../core/services/webServiceConsumers/advisor-branding.service';
+import { AdvisorBrand } from '@model/advisorBrand.model';
+import { DomSanitizer } from '@angular/platform-browser';
+import { AdvisorContacts } from '@model/advisorContact.model';
+
+@Component({
+  selector: 'app-my-profile',
+  templateUrl: './my-profile.component.html',
+  styleUrls: ['./my-profile.component.scss']
+})
+export class MyProfileComponent implements OnInit, OnDestroy {
+
+
+  myProfileSubscriber: Subscription;
+  contactSubscriber: Subscription;
+  myprofile: AdvisorBrand;
+  contacts: AdvisorContacts;
+  imagePath: any;
+  headers: Object
+
+  constructor(private advisorbranding: AdvisorBranding, private _sanitizer: DomSanitizer) { }
+
+  ngOnInit() {
+    this.contactHeaders()
+    this.myProfileSubscriber = this.advisorbranding.mockAdvisorBranch().subscribe(
+      data => {
+        this.myprofile = data;
+        console.log(this.myprofile);
+        this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//');
+      })
+
+    this.contactSubscriber = this.advisorbranding.mockContacts().subscribe(data => {
+      this.contacts = data;
+
+      console.log(this.contacts);
+    })
+
+
+  }
+
+  contactHeaders() {
+
+    this.headers = [{
+      name: 'First Name',
+    },
+    {
+      name: 'Last Name',
+    },
+    {
+      name: 'User Name',
+    },
+    {
+      name: 'RepID',
+    },
+    {
+      name: 'Phone #',
+    },
+    {
+      name: 'Email Id',
+    },
+    {
+      name: 'Action',
+    }]
+
+  }
+  ngOnDestroy() {
+    this.myProfileSubscriber.unsubscribe();
+    this.contactSubscriber.unsubscribe();
+  }
+
+}
