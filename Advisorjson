@@ -1,0 +1,28 @@
+{
+    "status": "Success",
+    "comments": "Get Advisor Branding details successfully",
+    "correlationId": null,
+    "data": {
+        "RepID": "260L",
+        "Logo": "iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAACRtSURBVGhDlZsHQFRn",
+        "UseLogoAsIcon": false,
+        "UseLogoinFooter": true,
+        "OriginalLogo": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nz",
+        "HexCode": "",
+        "DBAText": "Test DBA Text",
+        "FontName": "",
+        "DisplayDBAInformation": true,
+        "Photo": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//",
+        "IsDefaultLogoSelected": false,
+        "FacebookId": "FB001",
+        "FacebookUserName": "TestUsername",
+        "FacebookTrackingNumber": "bbbb9282",
+        "LinkedInId": "TestLIUsername",
+        "LinkedInUserName": "",
+        "LinkedinTrackingNumber": "ccc323",
+        "TwitterId": "TW001",
+        "TwitterUserName": "TestTWusername",
+        "TwitterTrackingNumber": "ddd313",
+        "Timestamp": "2018-11-23T07:53:04.097"
+    }
+}
