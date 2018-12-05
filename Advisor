@@ -1,0 +1,29 @@
+import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { AdvisorBrand,  } from '../../../shared/models/advisorBrand.model';
+import { WebServiceConsumer } from './web-service-consumer';
+import { ServiceName } from '../endpoints.service';
+import { AdvisorContacts } from '@model/advisorContact.model';
+
+@Injectable()
+export class AdvisorBrandingService {
+  constructor(protected http: HttpClient) { }
+
+  getAdvisorBrand() {
+    // return this.request(ServiceName.getAdvisorBranding,null, false, true);
+    // return this.request<any>('GET', '/LPL.InvestorExperience.WebApi/AdvisorBranding/GetAdvisorBranding?repID=260L', {
+    //     headers: WebServiceConsumer.clientId }, true).pipe
+    // (map(acc => acc.AccountInfo));
+    this.http.get("http://txavappdev11.sddev.lpl.com:5520/LPL.InvestorExperience.WebApi/AdvisorBranding/GetAdvisorBranding").pipe(map((response) => response)).subscribe((data) => console.log(data));
+  }
+  mockAdvisorBranch(): Observable<AdvisorBrand> {
+    return this.http.request<AdvisorBrand>('GET', './assets/data/advisor-branching.json')
+      .pipe(map(res => res['data']));
+  }
+  mockContacts(): Observable<AdvisorContacts> {
+    return this.http.request<AdvisorContacts>('GET', './assets/data/contacts.json')
+      .pipe(map(res => res['data']));
+  }
+}
