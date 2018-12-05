@@ -1,0 +1,20 @@
+<div class="table-responsive">
+    <table class="table table-borderless table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th *ngFor="let h of tableHeader">{{ h?.name}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of tableContent?.advisorContacts">
+                <td>{{ c?.FirstName }}</td>
+                <td>{{ c?.LastName }}</td>
+                <td>{{ c?.UserName }}</td>
+                <td> {{ c?.AssocRepID }}</td>
+                <td><a href="tel:1-562-867-5309">{{ c?.MobileNO }}</a></td>
+                <td><a href="mailto:rafael.cepeda@lpl.com"> {{ c?.Email }} </a></td>
+                <td>Delete</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
