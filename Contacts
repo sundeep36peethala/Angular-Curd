@@ -1,0 +1,22 @@
+
+export interface AdvisorContacts {
+  advisorContacts: AdvisorContact[];
+}
+
+export interface AdvisorContact {
+  ContactID: number;
+  AssocRepID: string;
+  FirstName: string;
+  LastName: string;
+  UserName: string;
+  PhoneNO: string;
+  MobileNO: string;
+  Email: string;
+  Role: string;
+  LoginRepID: string;
+  FirmID: number;
+  InstitutionID: number;
+  BankID: string;
+  GroupID: number;
+  Extensions: string;
+}
