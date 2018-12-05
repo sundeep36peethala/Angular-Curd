@@ -1,0 +1,148 @@
+import { Component } from '@angular/core';
+import {FormGroup, FormArray, FormControl, FormBuilder} from '@angular/forms';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  editMode = false;
+  myProfile: any;
+  contacts: any;
+  headers: any;
+  profileForm: FormGroup;
+  constructor(public fb: FormBuilder) {      
+  }
+
+  ngOnInit() {
+    this.contactHeaders();
+      this.myProfile = {
+        FirstName: 'John',
+        LastName: 'Doe',
+        OfficeAddress: 'Test office address',
+        PhoneNumber: '2345',
+        Email: 'test@abc.com',
+        Twitter: 'test@twitter.com',
+        FaceBook: 'test@facebook.com',
+        LinkedIn: 'test@linkedin.com',
+        img: ''
+      }
+      this.contacts = [
+        {
+          ContactID: 13,
+          AssocRepID: "260B",
+          FirstName: "Tom",
+          LastName: "Alter",
+          UserName: "NewUser",
+          PhoneNO: "",
+          MobileNO: "6786572892",
+          Email: "test@lpl.com",
+          Role: "TestRole",
+          LoginRepID: "260B",
+          FirmID: 1,
+          InstitutionID: 3,
+          BankID: "Test",
+          GroupID: 2,
+          Extensions: "NewExt"
+      },
+      {
+        ContactID: 14,
+        AssocRepID: "260B",
+        FirstName: "Tom 2",
+        LastName: "Alter 2",
+        UserName: "NewUser 2",
+        PhoneNO: "",
+        MobileNO: "6786572892 - ne2",
+        Email: "test@lpl.com",
+        Role: "TestRole",
+        LoginRepID: "260B",
+        FirmID: 1,
+        InstitutionID: 3,
+        BankID: "Test",
+        GroupID: 2,
+        Extensions: "NewExt"
+    } 
+      ];
+
+      this.profileForm = this.fb.group({
+        profile: this.fb.group(this.myProfile),
+        contacts: this.fb.array([])
+      });
+
+      this.getContacts();
+  }
+
+  editProfile() {
+    this.editMode = true;
+  }
+
+  getContacts() {
+    
+    for (let i=0; i < this.contacts.length; i++) {
+      (this.profileForm.controls.contacts as FormArray).push(this.fb.group(this.contacts[i]))
+    }
+  }
+
+  contactHeaders() {
+
+    this.headers = [{
+      name: 'First Name',
+    },
+    {
+      name: 'Last Name',
+    },
+    {
+      name: 'User Name',
+    },
+    {
+      name: 'RepID',
+    },
+    {
+      name: 'Phone #',
+    },
+    {
+      name: 'Email Id',
+    },
+    {
+      name: 'Action',
+    }]
+
+}
+
+  newContact() {
+    return this.fb.group({
+      ContactID: '',
+      AssocRepID: "",
+      FirstName: "",
+      LastName: "",
+      UserName: "",
+      PhoneNO: "",
+      MobileNO: "",
+      Email: "",
+      Role: "",
+      LoginRepID: "",
+      FirmID: ''  ,
+      InstitutionID: '',
+      BankID: "",
+      GroupID: '' ,
+      Extensions: ""
+  })
+  }
+
+  addContact() {
+    (this.profileForm.controls.contacts as FormArray).push(this.newContact())
+  }
+
+  saveForm() {
+    this.myProfile = this.profileForm.controls.profile.value;
+    this.contacts = this.profileForm.controls.contacts.value;
+    this.editMode = false;
+  }
+
+  deleteContact(i) {
+    (this.profileForm.controls.contacts as FormArray).removeAt(i);
+  }
+
+ 
+}
