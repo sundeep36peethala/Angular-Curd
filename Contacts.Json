@@ -1,0 +1,27 @@
+{
+    "status": "Success",
+    "comments": "Contact details fetched successfully.",
+    "correlationId": null,
+    "data": {
+        "advisorContacts": [
+            {
+                "ContactID": 13,
+                "AssocRepID": "260B",
+                "FirstName": "Tom",
+                "LastName": "Alter",
+                "UserName": "NewUser",
+                "PhoneNO": "",
+                "MobileNO": "6786572892",
+                "Email": "test@lpl.com",
+                "Role": "TestRole",
+                "LoginRepID": "260B",
+                "FirmID": 1,
+                "InstitutionID": 3,
+                "BankID": "Test",
+                "GroupID": 2,
+                "Extensions": "NewExt"
+            }
+        ]
+    }
+}
+
