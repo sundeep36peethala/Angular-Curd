@@ -1,0 +1,22 @@
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { AdvisorContacts } from '@model/advisorContact.model';
+
+
+@Component({
+  selector: 'app-table',
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.scss']
+})
+
+export class TableComponent implements OnInit {
+@Input() tableHeader:any;
+@Input() tableContent:AdvisorContacts
+
+ngOnInit(){
+
+}
+
+
+
+
+}
