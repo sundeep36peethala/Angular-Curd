@@ -1,0 +1,75 @@
+<div *ngIf='!editMode' >
+  <button (click)='editProfile()' >Edit</button>
+  <h3>Profile details</h3>
+  <div>
+    <img [src]="myProfile.img" alt="">
+    <br>
+    First Name: {{myProfile.FirstName}} <br>
+    Last Name: {{myProfile.LastName}} <br>
+    ....
+  </div>
+  <h3>Contacts</h3>
+  <div class="table-responsive">
+      <table class="table table-borderless table-hover">
+          <thead class="thead-light">
+              <tr>
+                  <th *ngFor="let h of headers">{{ h?.name}}</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let c of contacts">
+                  <td>{{ c?.FirstName }}</td>
+                  <td>{{ c?.LastName }}</td>
+                  <td>{{ c?.UserName }}</td>
+                  <td> {{ c?.AssocRepID }}</td>
+                  <td><a href="tel: {{ c?.MobileNO }} ">{{ c?.MobileNO }}</a></td>
+                  <td><a href="mailto: {{ c?.Email }}"> {{ c?.Email }} </a></td>                  
+              </tr>
+          </tbody>
+      </table>
+  </div>
+
+</div>
+
+<div *ngIf='editMode' >
+    <form  [formGroup]='profileForm' >
+      <div formGroupName='profile' >
+        <h3>Edit Profile</h3>
+        First Name: <input type="text" formControlName='FirstName' >
+        Last Name: <input type="text" formControlName='LastName' >
+        Twitter: <input type="text" formControlName='Twitter' >
+        Facebook : <input type="text" formControlName='FaceBook' >
+
+      </div>
+      <h3>Edit Contacts</h3>
+      <button (click)='addContact()' >Add Contact</button>
+        <table class="table table-borderless table-hover">          
+            <thead class="thead-light">
+                <tr>
+                    <th *ngFor="let h of headers">{{ h?.name}}</th>
+                </tr>
+            </thead>   
+                      
+        
+        <ng-container formArrayName='contacts' >
+
+            <tbody>
+                <tr *ngFor='let contact of profileForm.controls.contacts.controls; let i=index;'>
+                    <ng-container [formGroupName]='i' >                        
+                        <td> <input type="text" formControlName='FirstName' > </td>
+                        <td> <input type="text" formControlName='LastName' > </td>
+                        <td> <input type="text" formControlName='UserName' ></td>
+                        <td> <input type="text" formControlName='AssocRepID' ></td>
+                        <td> <input type="text" formControlName='MobileNO' ></td>
+                        <td><input type="text" formControlName='Email' ></td>
+                        <td > <button (click)='deleteContact(i)'> Delete </button> </td>
+                    </ng-container>
+                    
+                </tr>
+            </tbody> 
+            
+        </ng-container>
+      </table>
+    </form>
+    <button (click)='saveForm()' >Save</button>
+</div>
